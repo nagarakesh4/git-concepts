@@ -38,7 +38,7 @@ func main() {
 		if err == nil{
 			//send the template browser using response write with data parameters
 			//template.Execute(w, request.URL.Path)
-			template.Execute(w, "Venkata Buddhiraju go to Jungle Book movie today!")
+			template.Execute(w, "Venkata Buddhiraju from San Jose!")
 		}
 	})
 	
@@ -61,7 +61,7 @@ func main() {
 	})
 	
 	//handling route for branching templates logic
-	http.HandleFunc("/branches", func(w http.ResponseWriter, request *http.Request){
+	http.HandleFunc("/", func(w http.ResponseWriter, request *http.Request){
 		w.Header().Add("Content-Type", "text/html")
 		
 		//create a new template using New() and pass in the name of the template (can be any name) and invoke the parse
@@ -201,10 +201,10 @@ const branchingLogicDoc = `
 <html>
 	<head><title>Golang Web Application</title></head>
 	<body>
-		{{if eq . "/Google"}}
-			<h2> This is a Google page</h2>
+		{{if eq . "/venkata"}}
+			<h2> This logic is implemented through branches, you are now at /venkata URL </h2>
 		{{else}}
-			<h2> This is {{.}} page </h2>
+			<h2> This logic is implemented through branches, you are now at {{.}} URL </h2>
 		{{end}}	
 	</body>
 </html>`
